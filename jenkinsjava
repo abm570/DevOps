@@ -12,7 +12,7 @@ pipeline {
               }
         }
 
-      stage('Build') {
+      stage('Compile') {
                   steps {
                         echo 'Compiling....'
                         sh 'javac demo.java'

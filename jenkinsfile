@@ -1,0 +1,23 @@
+pipepline{
+  agent any
+
+  stages{
+        stage('Checkout') {
+              steps {
+                    git branch: 'main', url: 'https://github.com/abm570/DevOps/'
+              }
+        }
+
+        stage('Build') {
+              steps {
+                    echo "Building...."
+              }
+        }
+
+        stage('Test') {
+              steps {
+                  echo "Testing...."
+              }
+         }
+    }
+}

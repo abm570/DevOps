@@ -1,29 +1,29 @@
 pipeline {
     agent any
 
-      tools {
-          jdk 'jdk21'
-      }
+    tools {
+        jdk 'jdk21'
+    }
 
-      stage('Checkout') {
-          stage('Checkout') {
-              steps {
-                    git branch: 'main', url: 'https://github.com/abm570/DevOps/'
-              }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/abm570/DevOps/'
+            }
         }
 
-      stage('Compile') {
-                  steps {
-                        echo 'Compiling....'
-                        sh 'javac demo.java'
-                  }
+        stage('Compile') {
+            steps {
+                echo 'Compiling....'
+                sh 'javac demo.java'
             }
-    
-            stage('Run') {
-                  steps {
-                      echo 'Running....'
-                      sh 'java demo'
-                  }
-             }
+        }
+
+        stage('Run') {
+            steps {
+                echo 'Running....'
+                sh 'java demo'
+            }
+        }
     }
 }

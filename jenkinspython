@@ -13,7 +13,7 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'Compiling....'
-                sh 'python3 hello.py'
+                sh 'python3 demo.py'
             }
         }
       }

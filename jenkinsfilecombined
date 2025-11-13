@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk21'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/abm570/DevOps/'
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                echo 'Compiling....'
+                sh 'javac hello.java'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                echo 'Running....'
+                sh 'java hello'
+            }
+        }
+
+      stage('Build Python')
+      {
+          steps{
+                  sh 'python3 demo.py'
+        }
+      }
+    }
+}

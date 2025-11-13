@@ -14,6 +14,7 @@ pipeline {
 
         stage('Compile') {
             steps {
+                echo 'Running both Java & Python Files inside a single Jenkins File'
                 echo 'Compiling....'
                 sh 'javac hello.java'
             }
@@ -21,7 +22,7 @@ pipeline {
 
         stage('Run') {
             steps {
-                echo 'Running....'
+                echo 'Running Java File....'
                 sh 'java hello'
             }
         }
@@ -29,6 +30,7 @@ pipeline {
       stage('Build Python')
       {
           steps{
+                  echo 'Running Python File....'
                   sh 'python3 demo.py'
         }
       }

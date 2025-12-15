@@ -2,7 +2,7 @@ pipeline{
   agent any
 
   triggers{
-    PollSCM '* * * * *'
+    pollSCM '* * * * *'
   }
   stages{
         stage('Checkout') {

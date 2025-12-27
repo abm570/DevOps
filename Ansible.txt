@@ -1,0 +1,79 @@
+1️⃣ What is Ansible?
+
+Ansible is an open-source IT automation tool.
+
+It is used to configure systems, deploy applications, and manage IT infrastructure automatically.
+
+Written in Python, it uses a declarative language (YAML) for describing automation tasks.
+
+2️⃣ Key Features
+Feature	Explanation
+Agentless	No software needs to be installed on target machines; uses SSH for Linux or WinRM for Windows.
+Simple Language	Uses YAML in the form of Playbooks; easy to read and write.
+Idempotent	Running the same task multiple times does not change the system if it’s already configured correctly.
+Extensible	Supports modules for cloud, network, databases, Docker, etc.
+Orchestration	Can coordinate multi-step processes across multiple servers.
+Integration	Works well with CI/CD pipelines, Docker, Kubernetes, and monitoring tools.
+3️⃣ Components of Ansible
+
+Control Node – The machine where Ansible is installed and commands are executed.
+
+Managed Nodes – The servers or machines Ansible manages.
+
+Inventory File – Lists all the managed nodes.
+
+Modules – Units of work (like installing a package, copying files, or restarting a service).
+
+Playbooks – YAML files defining tasks and configurations.
+
+Roles – Organize Playbooks into reusable components.
+
+4️⃣ Advantages of Ansible
+
+No Agents Required: Easier to maintain.
+
+Simple to Learn: Human-readable YAML files.
+
+Automation: Reduces manual errors and repetitive tasks.
+
+Scalable: Can manage a few servers or thousands.
+
+Open Source & Free: With a strong community and plenty of modules.
+
+5️⃣ Example Use Cases
+
+Deploy applications to servers automatically.
+
+Configure servers with packages, users, or settings.
+
+Manage Docker containers and Kubernetes clusters.
+
+Automate CI/CD workflows with Jenkins.
+
+Set up monitoring tools like Grafana or Prometheus.
+
+Simple Example: Installing Nginx on a server
+
+Inventory file (hosts)
+
+webservers:
+  192.168.1.10
+
+
+Playbook (install-nginx.yml)
+
+- hosts: webservers
+  become: yes
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+
+Run with:
+
+ansible-playbook -i hosts install-nginx.yml
+
+
+This will install Nginx on all servers listed under webservers.

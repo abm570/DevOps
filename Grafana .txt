@@ -1,0 +1,99 @@
+1️⃣ What is Grafana?
+
+Grafana is an open-source visualization and monitoring tool.
+
+It allows you to create interactive dashboards from different data sources.
+
+Used widely for DevOps, server monitoring, CI/CD pipelines, and metrics visualization.
+
+2️⃣ Advantages of Grafana
+Advantage	Explanation
+Multiple Data Sources	Connects to Prometheus, InfluxDB, MySQL, PostgreSQL, Elasticsearch, and more.
+Beautiful Dashboards	Offers graphs, tables, heatmaps, gauges, and alert panels.
+Alerts & Notifications	Can trigger alerts based on thresholds via email, Slack, Teams, etc.
+Flexible Queries	Supports custom queries for visualizing complex metrics.
+Open-Source & Extensible	Free to use, with plugins and community dashboards available.
+Real-time Monitoring	Updates dashboards live as data changes.
+Team Collaboration	Share dashboards and organize with folders.
+3️⃣ How to Connect Grafana to Jenkins
+
+You can visualize build metrics from Jenkins in Grafana.
+
+Steps:
+
+Install Jenkins plugin for metrics
+
+Install Prometheus Plugin in Jenkins:
+
+Manage Jenkins → Manage Plugins → Available → Prometheus Metrics Plugin → Install
+
+
+Enable metrics endpoint
+
+Go to:
+
+Manage Jenkins → Configure System → Enable Prometheus endpoint
+
+
+This exposes Jenkins metrics at:
+
+http://<jenkins-ip>:<port>/prometheus
+
+
+Add Prometheus as a data source in Grafana
+
+Grafana → Settings (gear icon) → Data Sources → Add Data Source → Prometheus
+
+URL: http://<jenkins-ip>:<port>
+
+Click Save & Test
+
+Create dashboards
+
+Use prebuilt Jenkins dashboards from Grafana library or build your own to visualize builds, pipelines, success/failure rate, etc.
+
+4️⃣ How to Connect Grafana to Docker (Container Metrics)
+
+You can monitor Docker containers with Grafana using cAdvisor + Prometheus:
+
+Steps:
+
+Run cAdvisor
+
+docker run \
+  --volume=/:/rootfs:ro \
+  --volume=/var/run:/var/run:rw \
+  --volume=/sys:/sys:ro \
+  --volume=/var/lib/docker/:/var/lib/docker:ro \
+  --publish=8080:8080 \
+  --detach=true \
+  --name=cadvisor \
+  google/cadvisor:latest
+
+
+cAdvisor exposes container metrics at:
+
+http://<server-ip>:8080/metrics
+
+
+Set up Prometheus to scrape cAdvisor
+
+Add to prometheus.yml:
+
+scrape_configs:
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['<server-ip>:8080']
+
+
+Restart Prometheus.
+
+Add Prometheus as a data source in Grafana
+
+URL: http://<prometheus-ip>:9090
+
+Save & Test
+
+Create dashboards
+
+Use prebuilt Docker dashboards or visualize CPU, memory, network, and disk usage for containers.

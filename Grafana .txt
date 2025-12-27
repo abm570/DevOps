@@ -6,6 +6,47 @@ It allows you to create interactive dashboards from different data sources.
 
 Used widely for DevOps, server monitoring, CI/CD pipelines, and metrics visualization.
 
+2️⃣ Key Components of Grafana
+
+Data Sources – Connect to databases or monitoring systems.
+
+Examples: Prometheus, InfluxDB, MySQL, PostgreSQL, Elasticsearch, Loki, CloudWatch.
+
+Dashboards – Collections of visual panels (graphs, tables, gauges) that display data.
+
+Panels – Individual visualizations in a dashboard.
+
+Types: Graph, Table, Stat, Gauge, Heatmap, Pie Chart.
+
+Alerts – Can trigger notifications if a metric crosses a threshold.
+
+Users & Teams – Role-based access for collaboration.
+
+Plugins – Extend Grafana’s functionality (data sources, panels, apps).
+
+3️⃣ Architecture
++---------------------+
+|   Web UI / API      |
++---------------------+
+           |
+           v
++---------------------+
+|     Grafana Server  | --> handles dashboards, alerts, and queries
++---------------------+
+           |
+           v
++---------------------+
+|   Data Sources      | --> Prometheus, MySQL, InfluxDB, Elasticsearch...
++---------------------+
+
+
+Users interact through Web UI or API.
+
+Grafana queries the data sources in real-time.
+
+It doesn’t store metrics itself (except dashboards, users, and configuration in a database).
+
+
 2️⃣ Advantages of Grafana
 Advantage	Explanation
 Multiple Data Sources	Connects to Prometheus, InfluxDB, MySQL, PostgreSQL, Elasticsearch, and more.

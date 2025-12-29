@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+
+    triggers {
+        cron('H * * * *')
+    }
+
+    stages {
+        stage('Test Cron') {
+            steps {
+                echo "Triggered by cron"
+            }
+        }
+    }
+}

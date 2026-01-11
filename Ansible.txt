@@ -77,12 +77,3 @@ ansible-playbook -i hosts install-nginx.yml
 
 
 This will install Nginx on all servers listed under webservers.
-
-
-
-
-
-
-
-
-TESTING.............
